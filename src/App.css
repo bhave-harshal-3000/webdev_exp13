@@ -1,38 +1,328 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+/* Retro Aesthetic Styles */
+.retro-app {
   min-height: 100vh;
+  background: linear-gradient(135deg, #FFD166 0%, #EF7B45 50%, #8DB580 100%);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.retro-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+  z-index: 0;
+}
+
+.sunburst {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    repeating-conic-gradient(
+      from 0deg,
+      #FFD166 0deg 10deg,
+      #EF7B45 10deg 20deg,
+      #8DB580 20deg 30deg
+    );
+  opacity: 0.1;
+  z-index: 0;
+  animation: rotate 60s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.retro-container {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header */
+.retro-header {
+  text-align: center;
+  background: rgba(253, 240, 213, 0.9);
+  padding: 30px;
+  border-radius: 25px;
+  border: 8px double #EF7B45;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.groovy-title {
+  font-size: 3em;
+  color: #8B4513;
+  margin: 0;
+  text-shadow: 3px 3px 0 #FFD166;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.peace-symbol {
+  font-size: 4em;
+  margin: 10px 0;
+  animation: bounce 2s infinite;
+}
+
+.tagline {
+  font-size: 1.2em;
+  color: #EF7B45;
+  margin: 0;
+  font-style: italic;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Input Section */
+.input-section {
+  margin-bottom: 30px;
+}
+
+.bubble-input-container {
   display: flex;
-  flex-direction: column;
+  gap: 15px;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background: rgba(253, 240, 213, 0.9);
+  padding: 20px;
+  border-radius: 25px;
+  border: 5px dotted #8DB580;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.bubble-input {
+  flex: 1;
+  padding: 15px 20px;
+  border: 4px solid #EF7B45;
+  border-radius: 50px;
+  background: #FFF;
+  font-size: 1.1em;
+  font-family: 'Comic Sans MS', cursive;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.bubble-input:focus {
+  border-color: #8B4513;
+  box-shadow: 0 0 0 4px rgba(139, 69, 19, 0.2);
+}
+
+/* Retro Buttons */
+.retro-button {
+  background: linear-gradient(145deg, #EF7B45, #FFD166);
+  border: 4px solid #8B4513;
+  border-radius: 25px;
+  padding: 15px 25px;
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #8B4513;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.retro-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.retro-button:active {
+  transform: translateY(0) scale(1);
+}
+
+.retro-button.small {
+  padding: 8px 15px;
+  font-size: 0.9em;
+}
+
+.add-button {
+  background: linear-gradient(145deg, #8DB580, #6DA06B);
+  color: white;
+  border-color: #4A6B47;
+}
+
+.complete-btn {
+  background: linear-gradient(145deg, #FFD166, #EF7B45);
+}
+
+.completed-btn {
+  background: linear-gradient(145deg, #8DB580, #6DA06B);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.delete-btn {
+  background: linear-gradient(145deg, #EF7B45, #D45D39);
+  color: white;
+  border-color: #8B4513;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Tasks Section */
+.tasks-section {
+  background: rgba(253, 240, 213, 0.9);
+  border-radius: 25px;
+  padding: 30px;
+  border: 8px groove #EF7B45;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.section-title {
+  font-size: 1.8em;
+  color: #8B4513;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 0 #FFD166;
+  border-bottom: 3px wavy #8DB580;
+  padding-bottom: 10px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  color: #EF7B45;
+}
+
+.flower {
+  font-size: 4em;
+  margin-bottom: 10px;
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Task Items */
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background: white;
+  border-radius: 20px;
+  border: 4px solid #8DB580;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.task-item:hover {
+  transform: translateX(10px);
+  border-color: #EF7B45;
+}
+
+.task-item.completed {
+  opacity: 0.7;
+  background: #f8f8f8;
+}
+
+.task-item.completed .task-text {
+  text-decoration: line-through wavy #EF7B45;
+}
+
+.task-number {
+  background: #EF7B45;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2em;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.task-content {
+  flex: 1;
+}
+
+.task-text {
+  font-size: 1.2em;
+  color: #8B4513;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.task-date {
+  font-size: 0.8em;
+  color: #8DB580;
+  font-style: italic;
+}
+
+.task-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Footer */
+.retro-footer {
+  text-align: center;
+  margin-top: 30px;
+  padding: 20px;
+  background: rgba(253, 240, 213, 0.9);
+  border-radius: 20px;
+  border: 5px double #8B4513;
+  color: #8B4513;
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .retro-container {
+    padding: 10px;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .groovy-title {
+    font-size: 2em;
+  }
+  
+  .bubble-input-container {
+    flex-direction: column;
+  }
+  
+  .task-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  
+  .task-actions {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .groovy-title {
+    font-size: 1.5em;
+  }
+  
+  .retro-button {
+    padding: 12px 20px;
+    font-size: 1em;
   }
 }
